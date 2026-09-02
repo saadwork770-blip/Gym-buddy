@@ -488,5 +488,28 @@ const PROGRAM = {
   ],
 };
 
+/* ---------- Local media ----------
+   Every exercise has a real gym photograph and a looping animated GIF
+   (start position → end position) stored locally under assets/.
+   Source: free-exercise-db (github.com/yuhonas/free-exercise-db), released
+   into the public domain under the Unlicense. Files are served from this
+   repo, so the site still needs no external requests.
+   Paths are derived from the exercise id. */
+const MEDIA_CREDIT = "Photos & animations: free-exercise-db (public domain / Unlicense)";
+
+/* Cases where the pictured movement is a documented variation rather than an
+   exact match — called out in the UI so nothing is misrepresented. */
+const MEDIA_NOTES = {
+  "assisted-pull-up-machine":
+    "Pictured: the close-grip lat pulldown — the substitution this program lists for the assisted pull-up machine.",
+  "hip-adduction-abduction":
+    "The animation cycles through both machines: hip adduction (inner thigh) and hip abduction (outer thigh).",
+  "incline-treadmill-walk":
+    "Pictured: treadmill walking. This program calls for a moderate incline rather than a flat walk.",
+};
+
+function photoFor(id){ return `assets/photos/${id}.jpg`; }
+function gifFor(id){ return `assets/gifs/${id}.gif`; }
+
 function exerciseById(id){ return EXERCISES.find(e => e.id === id); }
 function exercisesForDay(day){ return EXERCISES.filter(e => e.day === day); }
