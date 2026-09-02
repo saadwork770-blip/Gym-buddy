@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — GymBuddy</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="32" x2="56" y2="32"/><rect x="4" y="24" width="8" height="16" rx="2"/><rect x="52" y="24" width="8" height="16" rx="2"/><rect x="14" y="18" width="6" height="28" rx="2"/><rect x="44" y="18" width="6" height="28" rx="2"/>
+      </svg>
+      GymBuddy
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="program.html">Program</a></li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:44px;">
+  <div class="wrap">
+
+    <!-- Empty state: no profiles at all -->
+    <div class="profile-empty" id="emptyState" style="display:none;">
+      <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <h2>Create your local profile</h2>
+      <p style="max-width:44ch;margin:0 auto 20px;">Track your bodyweight and check off exercises as you complete the
+      program. Everything is stored only in this browser — no account, no server.</p>
+      <button class="btn btn-primary" id="emptyCreateBtn">Create profile</button>
+    </div>
+
+    <!-- Create / edit form -->
+    <div id="formSection" style="display:none; max-width:640px; margin:0 auto;">
+      <div class="section-head">
+        <div class="kicker" id="formKicker">New profile</div>
+        <h2 id="formTitle">Tell us about you</h2>
+      </div>
+      <form class="card" id="profileForm">
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" required placeholder="e.g. Alex"></div>
+          <div class="field"><label for="f-email">Email (optional)</label><input id="f-email" type="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="f-age">Age</label><input id="f-age" type="number" min="10" max="100" required></div>
+          <div class="field"><label for="f-level">Experience level</label>
+            <select id="f-level">
+              <option>New to training</option>
+              <option selected>Some experience</option>
+              <option>Experienced</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-height">Height (cm)</label><input id="f-height" type="number" min="100" max="250" required></div>
+          <div class="field"><label for="f-weight">Weight (kg)</label><input id="f-weight" type="number" min="30" max="300" step="0.1" required></div>
+          <div class="field full"><label for="f-goal">Goal</label>
+            <select id="f-goal">
+              <option selected>Fat loss</option>
+              <option>Muscle gain</option>
+              <option>General fitness</option>
+              <option>Strength</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="formSubmitBtn">Create profile</button>
+          <button type="button" class="btn btn-ghost" id="formCancelBtn" style="display:none;">Cancel</button>
+        </div>
+        <p class="hint" style="margin-top:14px;">This is a personal local profile, not a secure account — data lives
+        only in this browser's storage on this device.</p>
+      </form>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="profile-shell" id="dashboard" style="display:none;">
+      <div class="card profile-card">
+        <div class="avatar" id="avatarInitial"></div>
+        <div class="name" id="dName"></div>
+        <div class="meta" id="dMeta"></div>
+        <button class="btn btn-ghost btn-sm" id="editBtn" style="width:100%;">Edit profile</button>
+        <button class="btn btn-danger btn-sm" id="deleteBtn" style="width:100%; margin-top:8px;">Delete profile</button>
+        <div class="profile-switch">
+          <div class="hint" style="margin-bottom:8px;">Local profiles on this device</div>
+          <ul class="plist" id="profileList"></ul>
+          <button class="btn btn-ghost btn-sm" id="newProfileBtn" style="width:100%;">+ New profile</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="stat-row" id="statRow"></div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="progress">Program progress</button>
+          <button class="tab-btn" data-tab="weight">Bodyweight log</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-progress">
+          <div class="card">
+            <div id="progressList"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-weight">
+          <div class="card">
+            <form class="weight-form" id="weightForm">
+              <div class="field">
+                <label for="w-weight">Log today's weight (kg)</label>
+                <input id="w-weight" type="number" min="30" max="300" step="0.1" required>
+              </div>
+              <button class="btn btn-primary btn-sm" type="submit">Add entry</button>
+            </form>
+            <canvas id="weightChart" width="600" height="180"></canvas>
+            <table class="log-table">
+              <thead><tr><th>Date</th><th>Weight (kg)</th></tr></thead>
+              <tbody id="weightRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>GymBuddy — built from your Fitness Time training plan.</span>
+    <span>Profiles are stored locally in your browser only.</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
