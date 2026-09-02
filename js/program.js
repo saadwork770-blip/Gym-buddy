@@ -55,7 +55,13 @@
     return `
       <tr data-row-id="${ex.id}">
         <td class="check-cell"><button class="check ${checked ? "done" : ""}" data-id="${ex.id}" ${profile ? "" : "disabled title=\"Create a profile to track progress\""}>${checked ? "✓" : ""}</button></td>
-        <td><span class="ex-name-link" data-id="${ex.id}">${ex.name}</span></td>
+        <td>
+          <span class="ex-name-link" data-id="${ex.id}">
+            <img class="row-thumb" src="${photoFor(ex.id)}" alt="" loading="lazy"
+                 data-photo="${photoFor(ex.id)}" data-gif="${gifFor(ex.id)}">
+            <span>${ex.name}</span>
+          </span>
+        </td>
         <td>${ex.sets}</td>
       </tr>`;
   }
@@ -111,6 +117,11 @@
       link.addEventListener("click", () => {
         window.location.href = `exercises.html?ex=${encodeURIComponent(link.dataset.id)}`;
       });
+      const thumb = link.querySelector(".row-thumb");
+      if (!thumb) return;
+      link.addEventListener("mouseenter", () => { thumb.src = thumb.dataset.gif; });
+      link.addEventListener("mouseleave", () => { thumb.src = thumb.dataset.photo; });
+      thumb.addEventListener("error", () => thumb.remove(), { once: true });
     });
   }
 

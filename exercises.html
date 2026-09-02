@@ -32,8 +32,9 @@
     <div class="section-head">
       <div class="kicker">Exercise Library</div>
       <h2>Every machine, cable, and movement in the plan</h2>
-      <p>29 entries — 24 strength exercises plus 5 cardio finishers, each with an illustrated diagram and
-      step-by-step form cues. Click a card for full instructions.</p>
+      <p>29 entries — 24 strength exercises plus 5 cardio finishers, each with a real gym photo, an animated
+      demonstration and step-by-step form cues. <b>Hover a card</b> to play its animation, or click for full
+      instructions.</p>
     </div>
 
     <div class="filters" id="filters">
@@ -54,9 +55,12 @@
         <h3 id="mTitle" style="margin-top:10px;"></h3>
         <div class="hint" id="mMeta"></div>
       </div>
-      <div class="m-icon" id="mIcon"></div>
     </div>
     <div class="modal-body">
+      <figure class="gif-figure">
+        <img id="mGif" alt="">
+        <figcaption id="mGifNote"></figcaption>
+      </figure>
       <h4>Sets &amp; Reps</h4>
       <p id="mSets" style="color:var(--text);font-weight:700;"></p>
       <h4>How to perform it</h4>
@@ -72,7 +76,7 @@
 <footer>
   <div class="wrap">
     <span>GymBuddy — built from your Fitness Time training plan.</span>
-    <span>Diagrams are original illustrations, not photographs.</span>
+    <span>Photos &amp; animations: free-exercise-db (public domain).</span>
   </div>
 </footer>
 
