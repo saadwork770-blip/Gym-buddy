@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Program — GymBuddy</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="32" x2="56" y2="32"/><rect x="4" y="24" width="8" height="16" rx="2"/><rect x="52" y="24" width="8" height="16" rx="2"/><rect x="14" y="18" width="6" height="28" rx="2"/><rect x="44" y="18" width="6" height="28" rx="2"/>
+      </svg>
+      GymBuddy
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="program.html">Program</a></li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:44px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" id="pSubtitle">Fitness Time — Standard Commercial Gym</div>
+      <h2 id="pTitle">4-Day Fat Loss Program</h2>
+      <p id="pIntro"></p>
+    </div>
+
+    <div class="stat-row" id="profileStats"></div>
+
+    <h3 style="margin:34px 0 14px;">Guidelines</h3>
+    <div class="guideline-grid" id="guidelines"></div>
+
+    <h3 style="margin:40px 0 14px;">Weekly schedule</h3>
+    <p class="hint" id="loginHint" style="margin-bottom:18px;"></p>
+    <div id="daysContainer"></div>
+
+    <h3 style="margin:34px 0 14px;">Notes</h3>
+    <div class="notes-box">
+      <ul id="notesList"></ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>GymBuddy — built from your Fitness Time training plan.</span>
+    <span>Progress checkmarks save to your active local profile.</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+<script src="js/program.js"></script>
+</body>
+</html>

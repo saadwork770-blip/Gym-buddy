@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise Library — GymBuddy</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="32" x2="56" y2="32"/><rect x="4" y="24" width="8" height="16" rx="2"/><rect x="52" y="24" width="8" height="16" rx="2"/><rect x="14" y="18" width="6" height="28" rx="2"/><rect x="44" y="18" width="6" height="28" rx="2"/>
+      </svg>
+      GymBuddy
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="program.html">Program</a></li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:44px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Exercise Library</div>
+      <h2>Every machine, cable, and movement in the plan</h2>
+      <p>29 entries — 24 strength exercises plus 5 cardio finishers, each with an illustrated diagram and
+      step-by-step form cues. Click a card for full instructions.</p>
+    </div>
+
+    <div class="filters" id="filters">
+      <input type="text" class="search-input" id="search" placeholder="Search exercises…">
+    </div>
+    <div class="filters" id="muscleFilters"></div>
+
+    <div class="grid grid-4" id="exGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">No exercises match your filters.</div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <span class="badge" id="mBadge"></span>
+        <h3 id="mTitle" style="margin-top:10px;"></h3>
+        <div class="hint" id="mMeta"></div>
+      </div>
+      <div class="m-icon" id="mIcon"></div>
+    </div>
+    <div class="modal-body">
+      <h4>Sets &amp; Reps</h4>
+      <p id="mSets" style="color:var(--text);font-weight:700;"></p>
+      <h4>How to perform it</h4>
+      <ol id="mSteps"></ol>
+      <h4>Tips</h4>
+      <ul class="tips" id="mTips"></ul>
+      <div class="source-note">From your 4-Day Fat Loss Program — <span id="mDay"></span>.</div>
+    </div>
+    <button class="modal-close" id="mClose" style="position:absolute; top:14px; right:16px;">&times;</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>GymBuddy — built from your Fitness Time training plan.</span>
+    <span>Diagrams are original illustrations, not photographs.</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/exercises.js"></script>
+</body>
+</html>
